@@ -1,0 +1,64 @@
+<%- include('../includes/head.ejs') %>
+<section>
+  <div>
+    <h1>title: <%= product.title %></h1>
+  </div>
+  <div>
+    <h2>description: <%= product.description %></h2>
+  </div>
+  <div>
+    <h2>price: <%= product.price %></h2>
+  </div>
+  <div>
+    <h2>category: <%= product.category %></h2>
+  </div>
+  <div>
+    <h2>In Stock: <%= product.isSoldOut ? 'No' : "yes" %></h2>
+  </div>
+  <div>
+    <h2>Views: <%= product.views %></h2>
+  </div>
+  <div>
+    <% for(let image of product.images) {%>
+    <img src="<%= image.url %> " alt="product image" />
+    <% } %>
+  </div>
+  <h2>Made By: <%= product.author.username %></h2>
+  <h3>on: <%= product.createdDate.toISOString().split('T')[0] %></h3>
+  <form action="/product/<%= product._id %>?_method=DELETE " method="POST">
+    <button type="submit">Delete Product</button>
+  </form>
+  <a href="/product/<%= product._id %>/edit">Edit Product</a>
+  <div>
+    <form action="/product/<%= product._id %>/review" method="post">
+      <div>
+        <label for="rating">Rating</label>
+        <input type="range" min="1" max="5" name="review[rating]" id="rating" />
+      </div>
+      <div>
+        <label for="body">Review</label>
+        <textarea name="review[body]" id="body" rows="10"></textarea>
+      </div>
+      <button type="submit">Add Review</button>
+    </form>
+  </div>
+</section>
+<% if(reviews.length > 0) {%>
+<section>
+  <% for(let review of reviews) {%>
+  <div>
+    <h2><%= review.rating %></h2>
+    <p><%= review.body %></p>
+    <h2>Made By: <%= review.author.username %></h2>
+    <h3>on: <%= review.createdDate.toISOString().split('T')[0] %></h3>
+    <a href="/product/<%= product._id %>/review/<%= review._id %>">Details</a>
+    <form
+      method="post"
+      action="/product/<%= product._id %>/review/<%= review._id %>?_method=DELETE"
+    >
+      <button type="submit">Delete Review</button>
+    </form>
+  </div>
+  <% } %>
+</section>
+<% } %> <%-include('../includes/end.ejs')%>

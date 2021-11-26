@@ -1,0 +1,64 @@
+<%- include('../includes/head.ejs') %>
+<h1>Edit Product</h1>
+<form
+  action="/product/<%= product._id %>?_method=PUT"
+  method="post"
+  enctype="multipart/form-data"
+>
+  <div>
+    <label for="title">Title</label>
+    <input
+      value="<%= product.title %>"
+      type="text"
+      id="title"
+      name="product[title]"
+    />
+  </div>
+
+  <div>
+    <label for="description">description</label>
+    <textarea
+      name="product[description]"
+      rows="6"
+      placeholder="<%= product.description %>"
+    ></textarea>
+  </div>
+  <div>
+    <label for="price">Price</label>
+    <input
+      type="number"
+      id="price"
+      name="product[price]"
+      value="<%= product.price %>"
+    />
+  </div>
+  <div>
+    <label for="qty">Quantity</label>
+    <input
+      type="number"
+      id="qty"
+      name="product[quantity]"
+      value="<%= product.quantity %>"
+    />
+  </div>
+  <div>
+    <label for="category">Category</label>
+    <select name="product[category]" id="category">
+      <% for(let category of categories) {%>
+      <option value="<%= category.type %>"><%= category.type %></option>
+      <% } %>
+    </select>
+  </div>
+  <div>
+    <label for="images">Images</label>
+    <input type="file" id="images" multiple name="images" />
+  </div>
+  <!-- <div>
+    <label for="video">Video</label>
+    <input type="file" id="video" name="video" />
+  </div> -->
+  <div>
+    <button type="submit">Edit</button>
+  </div>
+</form>
+<%-include('../includes/end.ejs')%>

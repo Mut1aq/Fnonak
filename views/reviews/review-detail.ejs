@@ -1,0 +1,14 @@
+<%- include('../includes/head.ejs') %>
+<h1>Review</h1>
+<h2><%= review.rating %></h2>
+<h2><%= review.body %></h2>
+<a href="/product/<%= review.product._id %>/review/<%= review._id %>/edit"
+  >Edit Review</a
+>
+<form
+  method="post"
+  action="/product/<%= review.product._id %>/review/<%= review._id %>?_method=DELETE"
+>
+  <button type="submit">Delete Review</button>
+</form>
+<%-include('../includes/end.ejs')%>

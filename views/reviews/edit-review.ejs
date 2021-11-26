@@ -1,0 +1,17 @@
+<%- include('../includes/head.ejs') %>
+<h1>Edit Review</h1>
+<form
+  action="/product/<%= review.product._id %>/review/<%= review._id %>?_method=PUT"
+  method="post"
+>
+  <div>
+    <label for="rating">Rating</label>
+    <input type="range" min="1" max="5" name="review[rating]" id="rating" />
+  </div>
+  <div>
+    <label for="body">Review</label>
+    <textarea name="review[body]" id="body" rows="10"></textarea>
+  </div>
+  <button type="submit">Edit Review</button>
+</form>
+<%-include('../includes/end.ejs')%>

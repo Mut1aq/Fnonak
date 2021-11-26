@@ -1,0 +1,51 @@
+<%- include('../includes/head.ejs') %>
+<section>
+  <form action="/signup" method="post">
+    <div>
+      <label for="email">Email: </label>
+      <input type="email" name="user[email]" id="email" />
+    </div>
+    <div>
+      <label for="firstName">First Name: </label>
+      <input type="text" name="user[firstName]" id="firstName" />
+    </div>
+    <div>
+      <label for="lastName">Last Name: </label>
+      <input type="text" name="user[lastName]" id="lastName" />
+    </div>
+    <div>
+      <label for="username">Username: </label>
+      <input type="username" name="user[username]" id="username" />
+    </div>
+    <div>
+      <label for="password">Password: </label>
+      <input type="password" name="user[password]" id="password" />
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm Password: </label>
+      <input
+        type="password"
+        name="user[confirmPassword]"
+        id="confirmPassword"
+      />
+    </div>
+    <div>
+      <select name="user[country]" id="country">
+        <% for(let country of countries) { %>
+        <option value="<%= country %> "><%= country %></option>
+        <% } %>
+      </select>
+    </div>
+    <div>
+      <label for="phoneNumber">Phone Number: </label>
+      <input type="number" name="user[phoneNumber]" id="phoneNumber" />
+    </div>
+    <div>
+      <label for="dateOfBirth">Date Of Birth</label>
+      <input type="date" name="user[dateOfBirth]" id="dateOfBirth" />
+    </div>
+
+    <button type="submit">signup</button>
+  </form>
+</section>
+<%-include('../includes/end.ejs')%>
