@@ -1,16 +1,5 @@
 /**
- * ! App.js => {
- * * Restful Routes
- * * MVC
- * }
- *
- * ! Users => {
- * Todo: Add Posts to User
- * Todo: Add Reviews to User
- * }
- *
- * TODO: Add Profiles
- * TODO: Think Of Filtering Algorithm
+ * ! turn application to REST API
  */
 
 if (process.env.NODE_ENV !== "production") {
