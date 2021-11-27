@@ -40,10 +40,7 @@ const ProductSchema = new Schema({
     min: 0,
     default: 0,
   },
-  isSoldOut: {
-    type: Boolean,
-    default: false,
-  },
+
   reviews: [
     {
       type: Schema.Types.ObjectId,

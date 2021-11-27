@@ -13,7 +13,7 @@
     <h2>category: <%= product.category %></h2>
   </div>
   <div>
-    <h2>In Stock: <%= product.isSoldOut ? 'No' : "yes" %></h2>
+    <h2>In Stock: <%= product.quantity > 0 ? "yes" : 'No' %></h2>
   </div>
   <div>
     <h2>Views: <%= product.views %></h2>

@@ -35,7 +35,6 @@ exports.postAddProduct = async (req, res, next) => {
     url: f.path,
     filename: f.filename,
   }));
-  product.isSoldOut = false;
   product.views = 0;
   product.author = req.user;
   product.createdDate = new Date();
