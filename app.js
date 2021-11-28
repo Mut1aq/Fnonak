@@ -1,5 +1,6 @@
 /**
  * ! turn application to REST API
+ * ! Start Sending Data as JSON
  */
 
 if (process.env.NODE_ENV !== "production") {
@@ -33,7 +34,7 @@ const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const websiteRoutes = require("./routes/website");
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -66,6 +67,16 @@ app.use((req, res, next) => {
   res.locals.user = req.user;
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  next();
+});
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
 
